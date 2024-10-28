@@ -1,12 +1,17 @@
 <script setup lang="ts">
 const listMenu = ref();
-
+const loading = ref(false);
 const cart = useState<any[]>("storeCart", () => []);
 
-const { data }: any = await useFetch(
-  "https://la3la3.com/shop-api/home/api/get-category.php"
-);
-listMenu.value = JSON.parse(data.value);
+const getHeaderList = async () => {
+  loading.value = true;
+  const { data }: any = await useFetch(
+    "https://la3la3.com/shop-api/home/api/get-category.php"
+  );
+  listMenu.value = JSON.parse(data.value);
+  await new Promise((resolve) => setTimeout(resolve, 300));
+  loading.value = false;
+};
 const handlenameSub = (item: any) => {
   localStorage.setItem("my-store", '{"breadcrumb":  "' + "" + '"}');
 };
@@ -18,15 +23,19 @@ const loadCart = () => {
   }
   console.log(cart.value);
 };
+const menuGlobo=useState("menuGlobo",()=>listMenu);
+getHeaderList();
 onMounted(() => {
   loadCart();
 });
 </script>
 <template>
+  <UILoadingHeader v-if="loading" />
   <div
-    class="sticky top-0 bg-gray-100 filter-blur drop-shadow-xl dark:bg-[#171717] z-50 border-b-2 border-gray-200 dark:border-gray-800"
+    v-else
+    class="sticky top-0 backdrop-blur-xl backdrop-brightness-150 dark:backdrop-blur-0 filter-blur drop-shadow-xl dark:bg-[#171717] z-50 dark:border-b-2 dark:border-gray-800"
   >
-    <UContainer class="flex justify-between p-5 items-center">
+    <UContainer class="flex justify-between p-5 items-center font-medium">
       <div>
         <NuxtLink to="/">
           <img

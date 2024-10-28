@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { ElNotification } from "element-plus";
-import { th } from "element-plus/es/locale/index.mjs";
 const route = useRoute();
 const productsList = ref<any>([]);
 const sid = ref(0);
@@ -8,8 +7,23 @@ const mid = ref(0);
 const e = ref(8);
 const s = ref(0);
 const loading1 = ref(false);
-const loading = ref();
+const loading = ref(false);
+const loading_PRO=ref(false);
+const menuGlobo = useState<any>("menuGlobo");
 
+watchEffect(() => {
+  if (menuGlobo.value && menuGlobo.value.length > 0) {
+    if (menuGlobo.value.find((m: any) => m.id == route.params.mid)) {
+      const handleHeaders = menuGlobo.value.find(
+        (m: any) => m.id == route.params.mid
+      );
+      console.log(handleHeaders);
+      useHead({
+        titleTemplate: handleHeaders.name + " - RIN_PC",
+      });
+    }
+  }
+});
 const open1 = () => {
   ElNotification({
     title: "Success!",
@@ -47,6 +61,12 @@ const addToCart = (product: any) => {
   saveCart();
 };
 
+const loadingProduct = () => {
+  loading_PRO.value = true;
+  setTimeout(() => {
+    loading_PRO.value = false;
+  }, 1000);
+}
 const getApiUrl = () => {
   const baseUrl = "https://la3la3.com/shop-api/home/api/get-product.php";
   return sid.value === 0
@@ -55,7 +75,7 @@ const getApiUrl = () => {
 };
 
 const getProductApi = async () => {
-  loading.value = true; // Start loading state
+  loading.value = true;
   try {
     const {
       data: products,
@@ -84,7 +104,7 @@ const getProductApi = async () => {
   } catch (err) {
     console.error("An error occurred while fetching products:", err);
   } finally {
-    loading.value = false; // End loading state regardless of outcome
+    loading.value = false;
   }
 };
 
@@ -99,6 +119,7 @@ const load = () => {
   }, 2000);
 };
 
+loadingProduct();
 onMounted(() => {
   getProductApi();
   loadCart(); // Load cart when component mounts
@@ -118,7 +139,7 @@ const setImg = (img: any, item: any) => {
 };
 </script>
 <template>
-  <LoadingProduct v-if="productsList == ''" />
+  <UILoadingProduct v-if="loading_PRO" />
   <div v-else>
     <Breadcrumb class="md:my-3" v-if="loading1 == false" />
     <div class="h-full text-center">
@@ -199,7 +220,7 @@ const setImg = (img: any, item: any) => {
       <p
         v-show="noMore"
         class="text-white dark:text-[#171717]"
-        :class="{ 'addMore ': loading === false }"
+        :class="{ 'addMore dark:text-white': loading === false }"
       >
         No more
       </p>

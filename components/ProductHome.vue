@@ -2,9 +2,10 @@
 const route = useRoute();
 const productsList = ref<any>([]);
 const e = ref(8);
-const loading = ref(false);
 const s = ref(0);
+const loading = ref(false);
 const loading1 = ref(false);
+const loading_PRO=ref(false);
 
 const open1 = () => {
   ElNotification({
@@ -17,7 +18,6 @@ const open1 = () => {
 };
 // Cart state
 const cart = useState<any[]>("storeCart", () => []);
-// const storeCart=useState('cart'=>)
 // Load cart from localStorage
 const loadCart = () => {
   const savedCart = localStorage.getItem("cart");
@@ -48,7 +48,12 @@ const getApiUrl = () => {
   const baseUrl = `https://la3la3.com/shop-api/home/api/get-product.php?s=${s.value}&e=${e.value}`;
   return baseUrl;
 };
-
+const loadingProduct = () => {
+  loading_PRO.value = true;
+  setTimeout(() => {
+    loading_PRO.value = false;
+  }, 1000);
+}
 const getProductApi = async () => {
   loading.value = true;
   try {
@@ -57,8 +62,8 @@ const getProductApi = async () => {
     });
     const newProducts = JSON.parse(products.value);
     productsList.value.push(...newProducts);
-    loading.value = false;
   } finally {
+    loading.value = false;
   }
 };
 
@@ -72,7 +77,7 @@ const load = () => {
     loading1.value = false;
   }, 2000);
 };
-
+loadingProduct();
 onMounted(() => {
   getProductApi();
   loadCart(); // Load cart when component mounts
@@ -87,9 +92,8 @@ const setImg = (img: any, item: any) => {
 };
 </script>
 <template>
-  <LoadingProduct v-if="productsList == ''" />
+  <UILoadingProduct v-if="loading_PRO" />
   <div v-else>
-    <Breadcrumb class="md:my-3" v-if="loading1 == false" />
     <div class="h-full text-center">
       <ul
         class="list"
