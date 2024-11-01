@@ -20,7 +20,7 @@ const links = [
   <UBreadcrumb
     class="ml-5 "
     divider="/"
-    :ui="{ label: 'text-ms lg:text-xl' ,active:'primary' }"
+    :ui="{ label: 'text-ms lg:text-xl' ,active:'text-blue-500 dark:text-blue-400' }"
     :links="links"
   />
   </div>

@@ -1,25 +1,24 @@
 <script setup lang="ts">
-const colorMode = useColorMode()
+const colorMode = useColorMode();
+import { Moon, Sunny } from "@element-plus/icons-vue";
 const isDark = computed({
-  get () {
-    return colorMode.value === 'dark'
+  get() {
+    return colorMode.value === "dark";
   },
-  set () {
-    colorMode.preference = colorMode.value === 'dark' ? 'light' : 'dark'
-  }
-})
+  set() {
+    colorMode.preference = colorMode.value === "dark" ? "light" : "dark";
+  },
+});
 </script>
 
 <template>
   <ClientOnly>
-    <UToggle
-    color="blue"
-    on-icon="i-heroicons-moon-20-solid"
-    off-icon="i-heroicons-sun-20-solid"
-    v-model="isDark"
-  />
-    <template #fallback>
-      <div class="w-8 h-8" />
-    </template>
+    <el-switch
+      style="--el-switch-on-color: #409EFF; --el-switch-off-color: #409EFF;"
+      v-model="isDark"
+      inline-prompt
+      :active-action-icon="Moon"
+      :inactive-action-icon="Sunny"
+    />
   </ClientOnly>
 </template>

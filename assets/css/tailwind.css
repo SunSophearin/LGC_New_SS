@@ -12,6 +12,9 @@
     .text-primary-500{
         @apply text-green-500 dark:text-green-500
     }
+    .text-price{
+        @apply text-[#c18126]
+    }
 }
 @layer utilities {
     .gray{

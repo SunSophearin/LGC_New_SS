@@ -65,7 +65,7 @@ const loadingProduct = () => {
   loading_PRO.value = true;
   setTimeout(() => {
     loading_PRO.value = false;
-  }, 1000);
+  }, 1500);
 }
 const getApiUrl = () => {
   const baseUrl = "https://la3la3.com/shop-api/home/api/get-product.php";
@@ -116,7 +116,7 @@ const load = () => {
     s.value += e.value;
     await getProductApi();
     loading1.value = false;
-  }, 2000);
+  }, 1000);
 };
 
 loadingProduct();
@@ -142,7 +142,7 @@ const setImg = (img: any, item: any) => {
   <UILoadingProduct v-if="loading_PRO" />
   <div v-else>
     <Breadcrumb class="md:my-3" v-if="loading1 == false" />
-    <div class="h-full text-center">
+    <div v-if="productsList.length>0" class="h-full text-center">
       <ul
         class="list"
         v-infinite-scroll="load"
@@ -178,7 +178,7 @@ const setImg = (img: any, item: any) => {
                   {{ item.name }}
                 </p>
                 <p
-                  class="text-sm font-semibold flex items-center text-center mt-2 h-1/2 text-red-500"
+                  class="text-xl font-semibold flex items-center text-center mt-2 h-1/2 text-price"
                 >
                   {{ item.price }}$
                 </p>
@@ -219,12 +219,13 @@ const setImg = (img: any, item: any) => {
       </p>
       <p
         v-show="noMore"
-        class="text-white dark:text-[#171717]"
+        class="text-white dark:text-[#171717] font-bold text-xl"
         :class="{ 'addMore dark:text-white': loading === false }"
       >
         No more
       </p>
     </div>
+    <UINoProduct v-else />
   </div>
 </template>
 <style scoped>

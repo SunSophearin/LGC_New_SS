@@ -5,7 +5,7 @@ const isloading = useState('isLoading');
   <div>
     <NuxtLoadingIndicator />
     <Header/>
-    <NuxtLayout>
+    <NuxtLayout >
       <NuxtPage />
     </NuxtLayout>
     <SlideMenu/>

@@ -101,7 +101,7 @@ const setImg = (img: any, item: any) => {
         :infinite-scroll-disabled="disabled"
       >
         <div
-          class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-4 p-2 lg:p-4"
+          class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-6 gap-4 p-2 lg:p-4"
         >
           <div
             class="h-[280px] md:h-[400px] lg:h-[450px] cursor-pointer p-2 bg-white dark:bg-neutral-800 filter drop-shadow-xl rounded-b-lg lg:mb-6 lg:my-0 lg:mx-0 rounded-xl transform transition duration-300 hover:scale-95 hover:shadow-blue-500"
@@ -130,7 +130,7 @@ const setImg = (img: any, item: any) => {
                   {{ item.name }}
                 </p>
                 <p
-                  class="text-sm font-semibold flex items-center text-center mt-2 h-1/2 text-red-500"
+                  class="text-xl font-semibold flex items-center text-center mt-2 h-1/2 text-price"
                 >
                   {{ item.price }}$
                 </p>

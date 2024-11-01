@@ -23,7 +23,7 @@ const loadCart = () => {
   }
   console.log(cart.value);
 };
-const menuGlobo=useState("menuGlobo",()=>listMenu);
+const menuGlobo = useState("menuGlobo", () => listMenu);
 getHeaderList();
 onMounted(() => {
   loadCart();
@@ -47,8 +47,9 @@ onMounted(() => {
         </NuxtLink>
       </div>
       <div class="hidden lg:flex sm:hidden md:hidden">
-        <ul class="flex gap-7 font-sixtyfour">
+        <ul class="flex gap-7 font-sixtyfour ">
           <li
+            class="link-7 hover:text-blue-600 dark:hover:text-blue-500"
             v-for="item in listMenu"
             :key="item.id"
             @click="handlenameSub(item.name)"
@@ -59,15 +60,15 @@ onMounted(() => {
           </li>
         </ul>
       </div>
-      <div class="flex justify-center items-start gap-6">
+      <div class="flex justify-center items-center gap-5">
         <DarkMode />
-        <div>
+        <div class="text-blue-600 dark:text-blue-500">
           <div v-if="cart.length">
             <el-badge :value="cart.length" class="item" type="primary">
               <NuxtLink to="/cart">
                 <UIcon
                   name="clarity:shopping-cart-line"
-                  class="w-6 h-6 p-0 cursor-pointer"
+                  class="w-6 h-6 cursor-pointer"
                 />
               </NuxtLink>
             </el-badge>
@@ -76,19 +77,21 @@ onMounted(() => {
             <NuxtLink to="/cart">
               <UIcon
                 name="clarity:shopping-cart-line"
-                class="w-6 h-6 p-0 cursor-pointer"
+                class="w-6 h-6 cursor-pointer"
               />
             </NuxtLink>
           </div>
         </div>
-        <UIcon
-          name="logos:facebook"
-          class="w-5 h-5 cursor-pointer hidden lg:flex"
-        />
+        <a
+          href="https://web.facebook.com/zi.rin.75"
+          class="cursor-pointer hidden lg:flex"
+        >
+          <UIcon name="logos:facebook" class="w-6 h-6" />
+        </a>
         <UIcon
           @click="slideBar = true"
           name="streamline:interface-setting-menu-2-button-parallel-horizontal-lines-menu-navigation-staggered-three-hamburger"
-          class="w-5 h-5 cursor-pointer lg:hidden"
+          class="w-6 h-6 text-blue-800 dark:text-blue-500 cursor-pointer lg:hidden"
         />
       </div>
     </UContainer>

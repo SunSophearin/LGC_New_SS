@@ -23,7 +23,7 @@
       <p class="text-center text-black dark:text-white text-base font-normal leading-relaxed pb-4">Try changing your filters to <br />see appointments </p>
       <div class="flex gap-3">
         <!-- <button class="w-full px-3 py-2 rounded-full border border-gray-300 text-gray-900 dark:text-white text-xs font-semibold leading-4"> Clear Filter </button> -->
-        <button @click="$router.push('/')" class="w-full px-3 py-2 bg-indigo-600 hover:bg-indigo-700 transition-all duration-500 rounded-full text-white text-xs font-semibold leading-4"> Back to Home </button>
+        <button @click="$router.push('/')" class="w-full px-3 py-2 bg-blue-500 hover:bg-blue-700 transition-all duration-500 rounded-full text-white text-xs font-semibold leading-4"> Back to Home </button>
       </div>
       </div>
       </div>

@@ -25,9 +25,9 @@ const links = [
   <UBreadcrumb
     class="ml-5 "
     divider="/"
-    :ui="{ label: 'text-ms lg:text-xl' ,active:'primary' }"
+    :ui="{ label: 'text-ms lg:text-xl ' ,active:'text-blue-500 dark:text-blue-400' }"
     :links="links"
   />
-  <div class="text-primary-500 px-2 mx-2 border cursor-pointer hover:bg-green-400 hover:text-white border-primary-500 rounded-lg lg:hidden" @click="isOpen = !isOpen">Filter</div>
+  <div class="text-blue-500 font-sixtyfour px-2 mx-2 border border-blue-500 cursor-pointer hover:bg-blue-400 hover:text-white rounded-lg lg:hidden" @click="isOpen = !isOpen">Filter</div>
   </div>
 </template>
