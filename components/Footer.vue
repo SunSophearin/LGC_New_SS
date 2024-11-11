@@ -19,14 +19,11 @@ getLoading();
             class="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse"
           >
             <img
-              src="https://cdn-icons-png.flaticon.com/512/8193/8193209.png"
-              class="h-8"
+              src="../assets/img/logoLGC.png"
+              class="w-32"
               alt="Flowbite Logo"
             />
-            <span
-              class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white"
-              >RedEye.</span
-            >
+            
           </a>
           <ul
             class="flex flex-wrap items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0 dark:text-gray-400"

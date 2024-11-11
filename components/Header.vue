@@ -21,9 +21,7 @@ const loadCart = () => {
   if (savedCart) {
     cart.value = JSON.parse(savedCart);
   }
-  console.log(cart.value);
 };
-const menuGlobo = useState("menuGlobo", () => listMenu);
 getHeaderList();
 onMounted(() => {
   loadCart();
@@ -40,8 +38,8 @@ onMounted(() => {
         <NuxtLink to="/">
           <img
             to="/"
-            class="w-10"
-            src="https://cdn-icons-png.flaticon.com/512/8193/8193209.png"
+            class="w-20 md:w-40 lg:w-50"
+            src="../assets/img/logoLGC.png"
             alt=""
           />
         </NuxtLink>
@@ -60,24 +58,24 @@ onMounted(() => {
           </li>
         </ul>
       </div>
-      <div class="flex justify-center items-center gap-5">
+      <div class="flex justify-center items-center gap-5 ">
         <DarkMode />
         <div class="text-blue-600 dark:text-blue-500">
           <div v-if="cart.length">
             <el-badge :value="cart.length" class="item" type="primary">
               <NuxtLink to="/cart">
-                <UIcon
+                <Icon
                   name="clarity:shopping-cart-line"
-                  class="w-6 h-6 cursor-pointer"
+                  class="w-7 h-7 cursor-pointer"
                 />
               </NuxtLink>
             </el-badge>
           </div>
           <div v-else>
             <NuxtLink to="/cart">
-              <UIcon
+              <Icon
                 name="clarity:shopping-cart-line"
-                class="w-6 h-6 cursor-pointer"
+                class="w-7 h-7 cursor-pointer"
               />
             </NuxtLink>
           </div>
@@ -86,9 +84,10 @@ onMounted(() => {
           href="https://web.facebook.com/zi.rin.75"
           class="cursor-pointer hidden lg:flex"
         >
-          <UIcon name="logos:facebook" class="w-6 h-6" />
+          <Icon name="logos:facebook" class="w-6 h-6 cursor-pointer" />
         </a>
-        <UIcon
+        
+        <Icon
           @click="slideBar = true"
           name="streamline:interface-setting-menu-2-button-parallel-horizontal-lines-menu-navigation-staggered-three-hamburger"
           class="w-6 h-6 text-blue-800 dark:text-blue-500 cursor-pointer lg:hidden"

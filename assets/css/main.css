@@ -108,7 +108,7 @@
 
 @media (min-width: 0px) and (max-width: 575.98px) {
   .el-carousel__container{
-    height: 300px !important;
+    height: 200px !important;
     object-fit: contain !important;
   }
 }
@@ -125,6 +125,6 @@
 /* // Extra large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) {
   .el-carousel__container{
-    height: 600px !important;
+    height: 450px !important;
   }
 }

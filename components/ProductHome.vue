@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const route = useRoute();
 const productsList = ref<any>([]);
-const e = ref(8);
+const e = ref(10);
 const s = ref(0);
 const loading = ref(false);
 const loading1 = ref(false);
@@ -24,7 +24,6 @@ const loadCart = () => {
   if (savedCart) {
     cart.value = JSON.parse(savedCart);
   }
-  console.log(cart.value);
 };
 
 // Save cart to localStorage
@@ -57,16 +56,30 @@ const loadingProduct = () => {
 const getProductApi = async () => {
   loading.value = true;
   try {
-    const { data: products }: any = await useFetch(getApiUrl(), {
+    const {
+      data: products,
+      pending,
+      error,
+    }: any = await useFetch(getApiUrl(), {
       lazy: true,
     });
-    const newProducts = JSON.parse(products.value);
-    productsList.value.push(...newProducts);
+
+    if (error.value) {
+      return;
+    }
+    if (products.value) {
+      const newProducts = JSON.parse(products.value);
+      if (Array.isArray(newProducts)) {
+        productsList.value.push(...newProducts);
+      } else {
+      }
+    } else {
+    }
+  } catch (err) {
   } finally {
     loading.value = false;
   }
 };
-
 const noMore = computed(() => s.value >= productsList.value.length);
 const disabled = computed(() => loading.value || noMore.value);
 const load = () => {
@@ -101,7 +114,7 @@ const setImg = (img: any, item: any) => {
         :infinite-scroll-disabled="disabled"
       >
         <div
-          class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-6 gap-4 p-2 lg:p-4"
+          class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-5 gap-4 p-2 lg:p-4"
         >
           <div
             class="h-[280px] md:h-[400px] lg:h-[450px] cursor-pointer p-2 bg-white dark:bg-neutral-800 filter drop-shadow-xl rounded-b-lg lg:mb-6 lg:my-0 lg:mx-0 rounded-xl transform transition duration-300 hover:scale-95 hover:shadow-blue-500"

@@ -1,7 +1,7 @@
 <template>
     <el-backtop :right="50" :bottom="40">
         <button class="glow-on-hover" type="button">
-            <UIcon name="mdi-light:chevron-up" class="w-10 h-10 text-white"/>
+            <Icon name="mdi-light:chevron-up" class="w-10 h-10 text-white"/>
         </button>
     </el-backtop>
   </template>

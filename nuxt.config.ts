@@ -1,8 +1,9 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: false },
-  modules: ["@nuxt/ui", "@nuxt/fonts", '@vueuse/nuxt', '@nuxt/image','@element-plus/nuxt'],
+  modules: ["@nuxt/ui", "@nuxt/fonts", '@vueuse/nuxt', '@nuxt/image', '@element-plus/nuxt', '@nuxt/icon'],
   css: ['~/assets/css/main.css','~/assets/css/tailwind.css'],
+
   app: {
     pageTransition: { name: 'page', mode: 'out-in' },
     head: {
@@ -16,4 +17,6 @@ export default defineNuxtConfig({
       title: "RIN_PC",
     }
   },
+
+  compatibilityDate: '2024-11-11',
 })

@@ -77,7 +77,9 @@ onMounted(() => {
           </tr>
         </thead>
         <tbody>
+          <TransitionGroup name="list" class="w-full">
           <tr
+
             v-for="item in cart"
             :key="item.id"
             class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
@@ -167,6 +169,7 @@ onMounted(() => {
               </button>
             </td>
           </tr>
+        </TransitionGroup>
         </tbody>
       </table>
     </div>
@@ -205,5 +208,14 @@ onMounted(() => {
 <style scoped>
 .example-showcase .el-loading-mask {
   z-index: 9;
+}
+.list-enter-active,
+.list-leave-active {
+  transition: all 0.5s ease;
+}
+.list-enter-from,
+.list-leave-to {
+  opacity: 0;
+  transform: translateX(30px);
 }
 </style>

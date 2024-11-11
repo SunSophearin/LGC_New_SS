@@ -23,7 +23,7 @@ getSlideList();
         <img
           :src="item.img"
           alt=""
-          class="w-full h-full object-fill overflow-hidden group-hover:scale-105 transform duration-150 p-1 group-hover:bg-gradient-to-r from-blue-700 to-red-400 rounded-2xl group-hover:duration-150"
+          class="w-full h-full object-fill overflow-hidden group-hover:scale-90 transform duration-150 p-1 group-hover:bg-gradient-to-r from-blue-700 to-red-400 rounded-2xl group-hover:duration-150"
         />
         <h1
           v-on:click="$router.push(`/products/${item.id}/catagory`)"

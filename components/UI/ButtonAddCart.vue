@@ -18,7 +18,7 @@ const handleAddToCart = async () => {
     class=" flex items-center justify-center w-full h-full font-semibold text-white bg-blue-600 rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition duration-300 ease-in-out"
   >
     <span v-if="!loadingCart" class="flex items-center justify-center gap-2">
-        <UIcon name="clarity:shopping-cart-line" class="w-5 h-6 p-0 cursor-pointer"/>
+        <Icon name="clarity:shopping-cart-line" class="w-5 h-6 p-0 cursor-pointer"/>
         <span>Add to Cart</span>
 
     </span>

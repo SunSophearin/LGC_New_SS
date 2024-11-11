@@ -96,13 +96,10 @@ const getProductApi = async () => {
       if (Array.isArray(newProducts)) {
         productsList.value.push(...newProducts);
       } else {
-        console.warn("Unexpected data format:", newProducts);
       }
     } else {
-      console.warn("No products received from API");
     }
   } catch (err) {
-    console.error("An error occurred while fetching products:", err);
   } finally {
     loading.value = false;
   }
